@@ -4,14 +4,16 @@ public class Tickets implements Comparable<Tickets> {
 	int Number;
 	Coordinates location;
 
+	//Constructor for the creation of tickets
 	public Tickets(double Cost, int Number, Coordinates location){
 		this.Cost = Cost;
 		this.Number = Number;
 		this.location = location;
 	}
 
+	//System for printing specific ticket information if that needs to be added once the user decides on a ticket.
 	void printTickets(){
-		System.out.println(Cost + " " + Number + " " + location.x + "," + location.y);
+		System.out.println(String.format("03d%",(getNumber()) + " $" + getCost() + " (" + getLocation().getX() + "," + getLocation().getY() + ")"));
 	}
 
 	public double getCost() {
@@ -38,13 +40,7 @@ public class Tickets implements Comparable<Tickets> {
 		this.location = location;
 	}
 
-	public int compare(Tickets arg1, Tickets arg2) {
-		Integer first = (arg1.getLocation().getX() + arg1.getLocation().getY());
-		Integer second = (arg2.getLocation().getX() + arg2.getLocation().getY());
-		int result = first.compareTo(second);
-		return result;
-	}
-
+	// Override for Comparing tickets making it possible to sort and compare tickets according to their x and y locations.
 	@Override
 	public int compareTo(Tickets arg0) {
 		if((this.getLocation().getX()) > (arg0.getLocation().getX())){

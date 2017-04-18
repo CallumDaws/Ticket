@@ -7,15 +7,19 @@ public class Coordinates {
 	int y;
 	String input;
 	String[] inputSplit;
+
+	// Constructor for setting coordinates
 	public Coordinates(int x, int y){
 		setCoords(x,y);
 	}
 
+	// default constructor if the object needs to be created for use
 	public Coordinates(){
 		setX(1);
 		setY(1);
 	}
-// Method for setting coordinates using methods input as parameter then check if it fails or not
+
+	// Method for setting coordinates using input parameters then check if it fails or not
 	public int setCoords(int x, int y){			
 		if((x<=10 && x>=-10) && (y<=10 && y>=-10)){
 			setX(x);
@@ -26,6 +30,7 @@ public class Coordinates {
 		}
 
 	}
+
 	public int getX() {
 		return x;
 	}
@@ -41,10 +46,12 @@ public class Coordinates {
 	public void setY(int y) {
 		this.y = y;
 	}
+	//Method for easily creating new coordinate object with given parameters
 	public Coordinates Coords(int x, int y){
 		Coordinates Coords = new Coordinates(x,y);
 		return Coords;
 	}
+	//System for printing out the Coordinates for a specific ticket
 	void Tickets(Coordinates c ){
 		System.out.println(c.getX() + " " + c.getY());
 	}

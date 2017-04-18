@@ -6,9 +6,9 @@ public class TicketBuying {
 	int locationNumber;
 	int loopNumber;
 	int x,y;
-	
-/* Method for ticket generation, also ensures the locations are unique by checking the x and y coordinates,
- *  if they match any currently in the list it recursively calls the method to restart generation */ 
+
+	/* Method for ticket generation, also ensures the locations are unique by checking the x and y coordinates,
+	 *  if they match any currently in the list it recursively calls the method to restart generation */ 
 	void GenerateTickets(){
 		int max = 10;
 		int min = -10;
@@ -32,7 +32,7 @@ public class TicketBuying {
 		Tickets.add(t);
 	}
 
-// Method for finding the closest 5 tickets to the location inputed
+	// Method for finding the closest 5 tickets to the location inputed
 	List<Tickets> findClosest(int x,int y){
 		int inputLocation = x+y;
 		int index =0;
@@ -63,28 +63,32 @@ public class TicketBuying {
 		return ClosestTickets;
 	}
 
-// Method to call which calls the generation methods
+	// Method to call which calls the generation methods
 	void Generate(){
 		int generationNumber;
 		for(generationNumber = 0; generationNumber<100; generationNumber++ ){
 			GenerateTickets();
 		}
 	}
-// Method which uses a scanner for user input then parses int to turn each side of the comma into different numbers to be used for x y
+	// Method which uses a scanner for user input then parses int to turn each side of the comma into different numbers to be used for x y
 	private void userInput() {
 		Scanner s = new Scanner(System.in);
 		String input;
 		String[] inputSplit;
 		input = s.next();
 		inputSplit = input.split(",");
+
 		try{
 			setX(Integer.parseInt(inputSplit[0]));
-			setY(Integer.parseInt(inputSplit[1]));
-		}catch (Exception WrongInput){
-			System.out.println("Please input a correct Number");
+			setY(Integer.parseInt(inputSplit[1]));}
+		catch (Exception WrongInput){
+			System.out.println("Please input valid Coordintes");
 			userInput();
 		}
-		s.close();
+		if((getX()>10 || getX()<-10) || (getY()>10 || getY()<-10)){
+			System.out.println("Error, Please input Coordinates between 10 and -10");
+			userInput();
+		}	
 	}
 
 	public static void main(String[] args) {
@@ -94,7 +98,7 @@ public class TicketBuying {
 		t.findClosest(t.getX(),t.getY());
 
 	}
-// Get and Setters
+	// Get and Setters
 	public int getX() {
 		return x;
 	}
